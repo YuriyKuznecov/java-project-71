@@ -1,12 +1,9 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-
-import java.io.File;
 import java.util.concurrent.Callable;
 
 @Command(name = "genDiff", version = "genDiff 1.0",mixinStandardHelpOptions = true, description = "Compares two configuration files and shows a difference.")
