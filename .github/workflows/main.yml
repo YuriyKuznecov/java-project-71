@@ -13,14 +13,18 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin'
+          distribution: 'oracle'
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.7
-      - run: ./app/gradlew checkstyleMain
-      - run: ./app/gradlew test
+          build-root-directory: app
+      - name: build gradle
+        working-directory: app
+        run: make build
+      - run: make lint
+      - run: make test
       - name: Publish code coverage
-        uses: paambaati/codeclimate-action@v5.0.0
+        uses: paambaati/codeclimate-action@v8.0.0
         env:
            CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
            JACOCO_SOURCE_PATH: /app/src/main/java
