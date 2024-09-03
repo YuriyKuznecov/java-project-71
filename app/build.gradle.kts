@@ -1,5 +1,6 @@
 plugins {
     application
+    checkstyle
     id("java")
     id("io.freefair.lombok") version "8.7.1"
     jacoco
