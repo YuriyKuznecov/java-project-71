@@ -1,6 +1,7 @@
 package hexlet.code;
 
-import hexlet.code.formatters.*;
+import hexlet.code.formatters.PlainFormatter;
+import hexlet.code.formatters.StylishFormater;
 
 import java.util.List;
 
