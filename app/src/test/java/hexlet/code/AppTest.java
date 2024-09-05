@@ -23,13 +23,24 @@ class AppTest {
 
     @Test
     public void testStylish() throws IOException {
-        var expected = readFixture("result.txt");
-
+        var expected = readFixture("resultStylish.txt");
         var actualJson = Differ.generate("file1.json", "file2.json", "stylish");
         assertEquals(expected, actualJson);
 
         var actualYaml = Differ.generate("file1.yaml", "file2.yaml", "stylish");
         assertEquals(expected, actualYaml);
+    }
+
+    @Test
+    public void testPlain() throws IOException {
+        var expected = readFixture("resultPlain.txt");
+        var actualJson = Differ.generate("file1.json", "file2.json", "plain");
+        assertEquals(expected, actualJson);
+
+        var actualYaml = Differ.generate("file1.yaml", "file2.yaml", "plain");
+        assertEquals(expected, actualYaml);
+
+
     }
 
 }

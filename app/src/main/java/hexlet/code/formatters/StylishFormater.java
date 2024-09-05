@@ -1,4 +1,6 @@
-package hexlet.code;
+package hexlet.code.formatters;
+
+import hexlet.code.Difference;
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ public class StylishFormater {
 
             switch (i.getChange()) {
                 case "added" -> str.append(" + ").append(newValue);
-                case "deleted" -> str.append(" - ").append(oldValue);
+                case "removed" -> str.append(" - ").append(oldValue);
                 case "unchanged" -> str.append("   ").append(oldValue);
                 case "updated" -> {
                     str.append(" - ").append(oldValue);

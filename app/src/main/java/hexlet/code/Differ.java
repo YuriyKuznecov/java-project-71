@@ -23,7 +23,7 @@ public class Differ {
 
         List<Difference> compareResult = Comparator.compare(fileParsed1, fileParsed2);
 
-        return format(compareResult, format);
+        return Formatter.format(compareResult, format);
     }
 
     public static String readFile(String filePath) throws IOException {
@@ -37,13 +37,5 @@ public class Differ {
     private static String getFileType(String filePath) {
         var results = filePath.split("\\.");
         return results[results.length - 1];
-    }
-
-    private static String format(List<Difference> compareResult, String format) {
-        return switch (format) {
-            case "stylish" -> StylishFormater.format(compareResult);
-            case null -> "";
-            default -> throw new RuntimeException("format not supported");
-        };
     }
 }

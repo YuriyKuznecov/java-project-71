@@ -25,7 +25,7 @@ public class Comparator {
                         .build());
             } else if (map1.containsKey(key) && !map2.containsKey(key)) {
                 results.add(Difference.builder()
-                        .change("deleted")
+                        .change("removed")
                         .key(key)
                         .oldValue(map1.get(key))
                         .build());
