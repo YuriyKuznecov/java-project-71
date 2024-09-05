@@ -9,19 +9,18 @@ public class StylishFormater {
         var str =  new StringBuilder("{\n");
 
         for (var i : compareResult) {
-            str.append(" ");
-            var key = i.getKey();
-            var oldValue = i.getOldValue();
-            var newValue = i.getNewValue();
+            String oldValue = String.format("%s: %s\n", i.getKey(), i.getOldValue());
+            String newValue = String.format("%s: %s\n", i.getKey(), i.getNewValue());
 
             switch (i.getChange()) {
-                case "added" -> str.append("+ ").append(key).append(": ").append(newValue).append("\n");
-                case "deleted" -> str.append("- ").append(key).append(": ").append(oldValue).append("\n");
-                case "unchanged" -> str.append("  ").append(key).append(": ").append(oldValue).append("\n");
-                case "changed" -> {
-                    str.append("- ").append(key).append(": ").append(oldValue).append("\n");
-                    str.append(" + ").append(key).append(": ").append(newValue).append("\n");
+                case "added" -> str.append(" + ").append(newValue);
+                case "deleted" -> str.append(" - ").append(oldValue);
+                case "unchanged" -> str.append("   ").append(oldValue);
+                case "updated" -> {
+                    str.append(" - ").append(oldValue);
+                    str.append(" + ").append(newValue);
                 }
+                default -> throw new RuntimeException();
             }
         }
         return str.append("}").toString();

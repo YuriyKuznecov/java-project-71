@@ -1,6 +1,11 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.Objects;
 
 public class Comparator {
 
@@ -24,7 +29,7 @@ public class Comparator {
                         .key(key)
                         .oldValue(map1.get(key))
                         .build());
-            } else if (map1.get(key).equals(map2.get(key))) {
+            } else if (Objects.equals(map1.get(key), map2.get(key))) {
                 results.add(Difference.builder()
                         .change("unchanged")
                         .key(key)
@@ -32,7 +37,7 @@ public class Comparator {
                         .build());
             } else {
                 results.add(Difference.builder()
-                        .change("changed")
+                        .change("updated")
                         .key(key)
                         .oldValue(map1.get(key))
                         .newValue(map2.get(key))

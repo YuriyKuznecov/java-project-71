@@ -1,13 +1,10 @@
 package hexlet.code;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.Builder;
 
-@Getter
-@Setter
+@Data
 @Builder
-
 public class Difference {
     private String change;
     private String key;

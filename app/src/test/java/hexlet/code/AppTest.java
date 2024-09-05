@@ -7,7 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class AppTest {
 
     private static Path getFixturesPath(String fileName) {
@@ -21,10 +22,14 @@ class AppTest {
     }
 
     @Test
-    public void testCall() throws Exception {
-        var expectedJson = readFixture("result.json");
-        var actual = Differ.generate("file1.json", "file2.json", "stylish");
-        assertEquals(expectedJson, actual );
+    public void testStylish() throws IOException {
+        var expected = readFixture("result.txt");
+
+        var actualJson = Differ.generate("file1.json", "file2.json", "stylish");
+        assertEquals(expected, actualJson);
+
+        var actualYaml = Differ.generate("file1.yaml", "file2.yaml", "stylish");
+        assertEquals(expected, actualYaml);
     }
 
 }
