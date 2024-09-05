@@ -20,7 +20,7 @@ jobs:
           build-root-directory: app
       - name: build gradle
         working-directory: app
-        run: make build
+        run: ./gradlew build
       - run: make lint
       - run: make test
       - name: Publish code coverage
