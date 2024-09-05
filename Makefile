@@ -7,25 +7,26 @@ clean:
 	./gradlew clean
 
 build:
-	./gradlew build
+	./app/gradlew build
 
 install:
 	./gradlew clean install
 
 run-dist:
-	./build/install/app/bin/app
+	./app/build/install/app/bin/app
 
 run:
-	./gradlew run
+	./app/gradlew run
 
 test:
-	./gradlew test
+	./app/gradlew test
 
 report:
-	./gradlew jacocoTestReport
+	./app/gradlew jacocoTestReport
 
 lint:
-	./gradlew checkstyleMain
+	./app/gradlew checkstyleMain
+	./app/gradlew checkstyleTest
 
 check-deps:
 	./gradlew dependencyUpdates -Drevision=release
