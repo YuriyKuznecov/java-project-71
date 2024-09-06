@@ -3,6 +3,7 @@ plugins {
     checkstyle
     id("java")
     id("io.freefair.lombok") version "8.7.1"
+    id("com.adarshr.test-logger") version "4.0.0"
     jacoco
 }
 
@@ -27,8 +28,7 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
 }
 
-tasks.jacocoTestReport {
-    reports { xml.required.set(true) }
-}
+tasks.jacocoTestReport { reports { xml.required.set(true) } }
