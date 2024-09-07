@@ -21,7 +21,7 @@ public class Differ {
         Map<String, Object> fileParsed2 = Parser.parse(content2, fileFormat2);
 
 
-        List<Difference> compareResult = Comparator.compare(fileParsed1, fileParsed2);
+        List<Map<String, Object>> compareResult = Comparator.compare(fileParsed1, fileParsed2);
 
         return Formatter.format(compareResult, format);
     }

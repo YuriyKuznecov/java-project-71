@@ -1,11 +1,11 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Difference;
 import java.util.List;
+import java.util.Map;
 
 public class PlainFormatter {
 
-    public static String format(List<Difference> compareResult) {
+    public static String format(List<Map<String, Object>> compareResult) {
         StringBuilder result = new StringBuilder();
         for (var i : compareResult) {
             result.append(getPlainFormat(i)).append("\n");
@@ -13,14 +13,14 @@ public class PlainFormatter {
         return result.toString();
     }
 
-    private static String getPlainFormat(Difference item) {
-        var key = item.getKey();
-        var oldValue = item.getOldValue();
-        var newValue = item.getNewValue();
+    private static String getPlainFormat(Map<String, Object> item) {
+        var key = item.get("key");
+        var oldValue = item.getOrDefault("oldValue", null);
+        var newValue = item.getOrDefault("newValue", null);
 
         var formatOldValue = formatValue(oldValue);
         var formatNewValue = formatValue(newValue);
-        switch (item.getChange()) {
+        switch (item.get("change").toString()) {
             case "added" -> {
                 return String.format("Property '%s' was added with value: %s", key, formatNewValue);
             }

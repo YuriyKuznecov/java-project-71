@@ -1,20 +1,20 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Difference;
-
 import java.util.List;
-
+import java.util.Map;
 
 public class StylishFormater {
 
-    public static String format(List<Difference> compareResult) {
+    public static String format(List<Map<String, Object>> compareResult) {
         var str =  new StringBuilder("{\n");
 
         for (var i : compareResult) {
-            String oldValue = String.format("%s: %s\n", i.getKey(), i.getOldValue());
-            String newValue = String.format("%s: %s\n", i.getKey(), i.getNewValue());
+            var key = i.get("key").toString();
+            var change = i.get("change").toString();
+            var oldValue = String.format("%s: %s\n", key, i.getOrDefault("oldValue", null));
+            var newValue = String.format("%s: %s\n", key, i.getOrDefault("newValue", null));
 
-            switch (i.getChange()) {
+            switch (change) {
                 case "added" -> str.append(" + ").append(newValue);
                 case "removed" -> str.append(" - ").append(oldValue);
                 case "unchanged" -> str.append("   ").append(oldValue);
