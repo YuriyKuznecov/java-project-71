@@ -33,7 +33,7 @@ public class Differ {
     public static String readFile(String filePath) throws IOException {
         Path path = Paths.get(filePath).normalize();
         if (!path.isAbsolute()) {
-            path = Paths.get("src", "main", "resources", filePath).toAbsolutePath().normalize();
+            path = Paths.get("src", "test", "resources", "fixtures", filePath).toAbsolutePath().normalize();
         }
         return Files.readString(path);
     }
