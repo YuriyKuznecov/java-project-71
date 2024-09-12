@@ -1,11 +1,9 @@
-Property 'chars1' was unchanged
 Property 'chars2' was updated. From [d, e, f] to false
 Property 'checked' was updated. From false to true
 Property 'default' was updated. From null to [value1, value2]
 Property 'id' was updated. From 45 to null
 Property 'key1' was removed
 Property 'key2' was added with value: 'value2'
-Property 'numbers1' was unchanged
 Property 'numbers2' was updated. From [2, 3, 4, 5] to [22, 33, 44, 55]
 Property 'numbers3' was removed
 Property 'numbers4' was added with value: [4, 5, 6]

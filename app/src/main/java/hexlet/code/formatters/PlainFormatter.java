@@ -9,6 +9,7 @@ public class PlainFormatter {
     public static String format(List<Map<String, Object>> compareResult) {
         return compareResult.stream()
                 .map(PlainFormatter ::getPlainFormat)
+                .filter(item -> !item.isEmpty())
                 .collect(Collectors.joining("\n"));
     }
 
@@ -26,13 +27,12 @@ public class PlainFormatter {
             case "removed" -> {
                 return String.format("Property '%s' was removed", key);
             }
-            case "unchanged" -> {
-                return String.format("Property '%s' was unchanged", key);
-            }
             case "updated" -> {
                 return String.format("Property '%s' was updated. From %s to %s", key, formatOldValue, formatNewValue);
             }
-            default -> throw new RuntimeException();
+            default -> {
+                return "";
+            }
         }
     }
 
