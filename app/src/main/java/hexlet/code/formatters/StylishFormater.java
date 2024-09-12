@@ -15,12 +15,12 @@ public class StylishFormater {
             var newValue = String.format("%s: %s\n", key, i.getOrDefault("newValue", null));
 
             switch (change) {
-                case "added" -> str.append(" + ").append(newValue);
-                case "removed" -> str.append(" - ").append(oldValue);
-                case "unchanged" -> str.append("   ").append(oldValue);
+                case "added" -> str.append("  + ").append(newValue);
+                case "removed" -> str.append("  - ").append(oldValue);
+                case "unchanged" -> str.append("    ").append(oldValue);
                 case "updated" -> {
-                    str.append(" - ").append(oldValue);
-                    str.append(" + ").append(newValue);
+                    str.append("  - ").append(oldValue);
+                    str.append("  + ").append(newValue);
                 }
                 default -> throw new RuntimeException();
             }
