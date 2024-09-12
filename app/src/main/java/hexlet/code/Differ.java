@@ -26,6 +26,10 @@ public class Differ {
         return Formatter.format(compareResult, format);
     }
 
+    public static String generate(String filePath1, String filePath2) throws IOException {
+        return generate(filePath1, filePath2, "stylish");
+    }
+
     public static String readFile(String filePath) throws IOException {
         Path path = Paths.get(filePath).normalize();
         if (!path.isAbsolute()) {
