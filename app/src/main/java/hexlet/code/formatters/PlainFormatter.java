@@ -2,15 +2,14 @@ package hexlet.code.formatters;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PlainFormatter {
 
     public static String format(List<Map<String, Object>> compareResult) {
-        StringBuilder result = new StringBuilder();
-        for (var i : compareResult) {
-            result.append(getPlainFormat(i)).append("\n");
-        }
-        return result.toString();
+        return compareResult.stream()
+                .map(PlainFormatter ::getPlainFormat)
+                .collect(Collectors.joining("\n"));
     }
 
     private static String getPlainFormat(Map<String, Object> item) {
