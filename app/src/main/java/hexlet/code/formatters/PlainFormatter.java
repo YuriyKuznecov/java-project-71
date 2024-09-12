@@ -41,8 +41,10 @@ public class PlainFormatter {
             return null;
         } else if (obj instanceof String || obj instanceof Character) {
             return "'" + obj + "'";
-        } else {
+        } else if (obj instanceof Number || obj instanceof Boolean) {
             return obj.toString();
+        } else {
+            return "[complex value]";
         }
     }
 }
