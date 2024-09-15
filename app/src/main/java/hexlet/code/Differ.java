@@ -31,15 +31,12 @@ public class Differ {
     }
 
     public static String readFile(String filePath) throws IOException {
-        Path path = Paths.get(filePath).normalize();
-        if (!path.isAbsolute()) {
-            path = Paths.get("src", "test", "resources", "fixtures", filePath).toAbsolutePath().normalize();
-        }
+        Path path = Paths.get("src", "test", "resources", "fixtures", filePath).toAbsolutePath().normalize();
         return Files.readString(path);
     }
 
     private static String getFileType(String filePath) {
         var results = filePath.split("\\.");
-        return results[results.length - 1];
+        return results[results.length - 1].toLowerCase();
     }
 }

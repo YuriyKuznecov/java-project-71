@@ -1,6 +1,8 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,9 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppTest {
 
+    private static final String FILE_1 = "file1";
+    private static  final String FILE_2 = "file2";
+
+    private static String stylish;
+    private static String plain;
+    private static String json;
+
     private static Path getFixturesPath(String fileName) {
-        return Paths.get("src", "test", "resources", "fixtures", fileName).toAbsolutePath()
-                .toAbsolutePath().normalize();
+        return Paths.get("src", "test", "resources", "fixtures", fileName).toAbsolutePath().normalize();
     }
 
     private static String readFixture(String fileName) throws IOException {
@@ -20,35 +28,39 @@ class AppTest {
         return Files.readString(path);
     }
 
-    @Test
-    public void testStylishFormat() throws IOException {
-        var expected = readFixture("resultStylish.txt");
-        var actualJson = Differ.generate("file1.json", "file2.json", "stylish");
-        assertEquals(expected, actualJson);
-
-        var actualYaml = Differ.generate("file1.yaml", "file2.yaml", "stylish");
-        assertEquals(expected, actualYaml);
+    @BeforeAll
+    public static void beforeAll() throws IOException {
+        stylish = readFixture("resultStylish.txt");
+        plain = readFixture("resultPlain.txt");
+        json = readFixture("resultJson.json");
     }
 
-    @Test
-    public void testPlainFormat() throws IOException {
-        var expected = readFixture("resultPlain.txt");
-        var actualJson = Differ.generate("file1.json", "file2.json", "plain");
-        assertEquals(expected, actualJson);
-
-        var actualYaml = Differ.generate("file1.yaml", "file2.yaml", "plain");
-        assertEquals(expected, actualYaml);
+    @ParameterizedTest
+    @ValueSource(strings = {".json", ".yaml"})
+    public void testStylishFormat(String s) throws IOException {
+        var actual = Differ.generate(FILE_1 + s, FILE_2 + s, "stylish");
+        assertEquals(stylish, actual);
     }
 
-    @Test
-    public void testJsonFormat() throws IOException {
-        var  expected = readFixture("resultJson..json");
-        var actualJson = Differ.generate("file1.json", "file2.json", "json");
-        assertEquals(expected, actualJson);
+    @ParameterizedTest
+    @ValueSource(strings = {".json", ".yaml"})
+    public void testPlainFormat(String s) throws IOException {
+        var actual = Differ.generate(FILE_1 + s, FILE_2 + s, "plain");
+        assertEquals(plain, actual);
+    }
 
-        var actualYaml = Differ.generate("file1.yaml", "file2.yaml", "json");
-        assertEquals(expected, actualYaml);
+    @ParameterizedTest
+    @ValueSource(strings = {".json", ".yaml"})
+    public void testJsonFormat(String s) throws IOException {
+        var actual = Differ.generate(FILE_1 + s, FILE_2 + s, "json");
+        assertEquals(json, actual);
+    }
 
+    @ParameterizedTest
+    @ValueSource(strings = {".json", ".yaml"})
+    public void testDefaultFormat(String s) throws IOException {
+        var actual = Differ.generate(FILE_1 + s, FILE_2 + s);
+        assertEquals(stylish, actual);
     }
 }
 

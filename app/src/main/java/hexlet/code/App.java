@@ -24,11 +24,10 @@ public final class App implements Callable<Integer> {
     public Integer call() {
         try {
             System.out.println(Differ.generate(filePath1, filePath2, format));
+            return 0;
         } catch (IOException e) {
-            throw new RuntimeException(e);
-
+            return 1;
         }
-        return 0;
     }
 
     public static void main(String[] args) {
