@@ -11,16 +11,16 @@ public class StylishFormater {
         for (var i : compareResult) {
             var key = i.get("key").toString();
             var change = i.get("change").toString();
-            var oldValue = String.format("%s: %s\n", key, i.getOrDefault("oldValue", null));
-            var newValue = String.format("%s: %s\n", key, i.getOrDefault("newValue", null));
+            var value1 = String.format("%s: %s\n", key, i.getOrDefault("value1", null));
+            var value2 = String.format("%s: %s\n", key, i.getOrDefault("value2", null));
 
             switch (change) {
-                case "added" -> str.append("  + ").append(newValue);
-                case "removed" -> str.append("  - ").append(oldValue);
-                case "unchanged" -> str.append("    ").append(oldValue);
+                case "added" -> str.append("  + ").append(value2);
+                case "removed" -> str.append("  - ").append(value1);
+                case "unchanged" -> str.append("    ").append(value1);
                 case "updated" -> {
-                    str.append("  - ").append(oldValue);
-                    str.append("  + ").append(newValue);
+                    str.append("  - ").append(value1);
+                    str.append("  + ").append(value2);
                 }
                 default -> throw new RuntimeException();
             }

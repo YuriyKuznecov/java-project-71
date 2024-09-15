@@ -1,74 +1,74 @@
 [ {
   "key" : "chars1",
   "change" : "unchanged",
-  "oldValue" : [ "a", "b", "c" ],
-  "newValue" : [ "a", "b", "c" ]
+  "value1" : [ "a", "b", "c" ],
+  "value2" : [ "a", "b", "c" ]
 }, {
   "key" : "chars2",
   "change" : "updated",
-  "oldValue" : [ "d", "e", "f" ],
-  "newValue" : false
+  "value1" : [ "d", "e", "f" ],
+  "value2" : false
 }, {
   "key" : "checked",
   "change" : "updated",
-  "oldValue" : false,
-  "newValue" : true
+  "value1" : false,
+  "value2" : true
 }, {
   "key" : "default",
   "change" : "updated",
-  "oldValue" : null,
-  "newValue" : [ "value1", "value2" ]
+  "value1" : null,
+  "value2" : [ "value1", "value2" ]
 }, {
   "key" : "id",
   "change" : "updated",
-  "oldValue" : 45,
-  "newValue" : null
+  "value1" : 45,
+  "value2" : null
 }, {
   "key" : "key1",
   "change" : "removed",
-  "oldValue" : "value1"
+  "value1" : "value1"
 }, {
   "key" : "key2",
   "change" : "added",
-  "newValue" : "value2"
+  "value2" : "value2"
 }, {
   "key" : "numbers1",
   "change" : "unchanged",
-  "oldValue" : [ 1, 2, 3, 4 ],
-  "newValue" : [ 1, 2, 3, 4 ]
+  "value1" : [ 1, 2, 3, 4 ],
+  "value2" : [ 1, 2, 3, 4 ]
 }, {
   "key" : "numbers2",
   "change" : "updated",
-  "oldValue" : [ 2, 3, 4, 5 ],
-  "newValue" : [ 22, 33, 44, 55 ]
+  "value1" : [ 2, 3, 4, 5 ],
+  "value2" : [ 22, 33, 44, 55 ]
 }, {
   "key" : "numbers3",
   "change" : "removed",
-  "oldValue" : [ 3, 4, 5 ]
+  "value1" : [ 3, 4, 5 ]
 }, {
   "key" : "numbers4",
   "change" : "added",
-  "newValue" : [ 4, 5, 6 ]
+  "value2" : [ 4, 5, 6 ]
 }, {
   "key" : "obj1",
   "change" : "added",
-  "newValue" : {
+  "value2" : {
     "nestedKey" : "value",
     "isNested" : true
   }
 }, {
   "key" : "setting1",
   "change" : "updated",
-  "oldValue" : "Some value",
-  "newValue" : "Another value"
+  "value1" : "Some value",
+  "value2" : "Another value"
 }, {
   "key" : "setting2",
   "change" : "updated",
-  "oldValue" : 200,
-  "newValue" : 300
+  "value1" : 200,
+  "value2" : 300
 }, {
   "key" : "setting3",
   "change" : "updated",
-  "oldValue" : true,
-  "newValue" : "none"
+  "value1" : true,
+  "value2" : "none"
 } ]

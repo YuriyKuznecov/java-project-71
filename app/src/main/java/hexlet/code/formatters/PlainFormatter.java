@@ -15,20 +15,20 @@ public class PlainFormatter {
 
     private static String getPlainFormat(Map<String, Object> item) {
         var key = item.get("key");
-        var oldValue = item.getOrDefault("oldValue", null);
-        var newValue = item.getOrDefault("newValue", null);
+        var value1 = item.getOrDefault("value1", null);
+        var value2 = item.getOrDefault("value2", null);
 
-        var formatOldValue = formatValue(oldValue);
-        var formatNewValue = formatValue(newValue);
+        var formatValue1 = formatValue(value1);
+        var formatValue2 = formatValue(value2);
         switch (item.get("change").toString()) {
             case "added" -> {
-                return String.format("Property '%s' was added with value: %s", key, formatNewValue);
+                return String.format("Property '%s' was added with value: %s", key, formatValue2);
             }
             case "removed" -> {
                 return String.format("Property '%s' was removed", key);
             }
             case "updated" -> {
-                return String.format("Property '%s' was updated. From %s to %s", key, formatOldValue, formatNewValue);
+                return String.format("Property '%s' was updated. From %s to %s", key, formatValue1, formatValue2);
             }
             default -> {
                 return "";
