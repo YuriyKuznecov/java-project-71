@@ -11,8 +11,8 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppTest {
-    private static final String FILE_1 = "file1";
-    private static final String FILE_2 = "file2";
+    private static final String FILE_1 = "src/test/resources/fixtures/file1";
+    private static final String FILE_2 = "src/test/resources/fixtures/file2";
     private static String stylish;
     private static String plain;
     private static String json;
