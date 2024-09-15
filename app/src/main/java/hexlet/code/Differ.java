@@ -31,7 +31,8 @@ public class Differ {
     }
 
     private static String readFile(String filePath) throws IOException {
-        Path path = Paths.get("src", "test", "resources", "fixtures", filePath).toAbsolutePath().normalize();
+        Path path = Paths.get("src", "test", "resources", "fixtures", filePath)
+                .toAbsolutePath().normalize();
         return Files.readString(path);
     }
 
